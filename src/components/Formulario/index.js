@@ -4,16 +4,21 @@ import CampoTexto from '../CampoTexto';
 import ListaSuspensa from '../ListaSuspensa';
 import Botao from '../Botao';
 
-const Formulario = () => {
-    
-    const aoSalvar = (e) => {
-        e.preventDefault();
-        console.log(`Form foi submetido: ${nome}, ${cargo}, ${imagem}, ${time}`);
-    }
+const Formulario = (props) => {
 
     const times = [
         'Programação', 'Front-End', 'Data Science', 'DevOps', 'UX e Design', 'Mobile', 'Inovação e Gestão'
     ];
+    
+    const aoSalvar = (e) => {
+        e.preventDefault();
+        props.aoColaboradorCadastrado({
+            nome: nome,
+            cargo: cargo,
+            imagem: imagem,
+            time: time
+        })
+    }
 
     const [nome, setNome] = useState('');
     const [cargo, setCargo] = useState('');
